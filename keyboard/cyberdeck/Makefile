@@ -58,7 +58,7 @@ CONFIG_H = config.h
 
 # MCU name
 # TODO technically it's a at90usb1286!
-MCU = at90usb1287
+MCU = at90usb1286
 #MCU = atmega32u4
 
 # Processor frequency.
@@ -118,7 +118,10 @@ CONSOLE_ENABLE = yes	# Console for debug(+400)
 COMMAND_ENABLE = yes    # Commands for debug and configuration
 #SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
 NKRO_ENABLE = yes	# USB Nkey Rollover
-
+PS2_USE_INT = yes
+#PS2_USE_BUSYWAIT = yes
+#PS2_USE_USART = yes
+PS2_MOUSE_ENABLE = yes
 
 # Optimize size but this may cause error "relocation truncated to fit"
 #EXTRALDFLAGS = -Wl,--relax
@@ -127,6 +130,7 @@ NKRO_ENABLE = yes	# USB Nkey Rollover
 VPATH += $(TARGET_DIR)
 VPATH += $(TMK_DIR)
 
-include $(TMK_DIR)/protocol/lufa.mk
 include $(TMK_DIR)/common.mk
+include $(TMK_DIR)/protocol.mk
+include $(TMK_DIR)/protocol/lufa.mk
 include $(TMK_DIR)/rules.mk
